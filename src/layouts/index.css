@@ -88,6 +88,14 @@ a:hover {
   color: rgba(255, 255, 255, 0.6);
 }
 
+p > a {
+	border-bottom: solid 2px rgba(255, 255, 255, 0.2);
+}
+
+p > a:hover {
+	border-bottom: solid 2px rgba(255, 255, 255, 0.15);
+}
+
 section {
 	display: block;
 	padding: 100px 24px;

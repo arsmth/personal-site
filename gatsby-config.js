@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Starter Blog",
-    author: "Kyle Mathews",
+    title: "Alex Smith - Student Developer",
+    author: "Alex Smith",
   },
   plugins: [
     {
