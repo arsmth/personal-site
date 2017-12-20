@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
-import Bio from '../components/Bio'
+import Bio from '../../components/Bio'
 
 const BlogList = styled.section`
   border: none;
@@ -50,13 +50,16 @@ BlogIndex.propTypes = {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query BlogIndexQuery {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { type: { eq: "blog" } } },
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           excerpt
