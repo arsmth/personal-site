@@ -16,6 +16,7 @@ const FooterList = styled.ul`
 const FooterItem = styled.li`
   color: ${props => props.dark ? 'hsl(0, 0%, 30%)' : 'inherit'};
   margin-bottom: .5em;
+  line-height: 1.125em;
 `
 
 const Footer = () => (

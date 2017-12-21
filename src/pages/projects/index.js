@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 const BlogList = styled.section`
   border: none;
@@ -11,25 +12,25 @@ const BlogList = styled.section`
 class ProjectIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    const projects = get(this, 'props.data.allMarkdownRemark.edges')
 
     return (
       <div>
         <Helmet title={get(this, 'props.data.site.siteMetadata.title')} />
         <BlogList>
+          <h2>Projects</h2>
           <br />
-          {posts.map(post => {
-            if (post.node.path !== '/404/') {
-              const title = get(post, 'node.frontmatter.title') || post.node.path
+          {projects.map(project => {
+            if (project.node.path !== '/404/') {
+              const title = get(project, 'node.frontmatter.title') || project.node.path
               return (
-                <div key={post.node.frontmatter.path}>
-                  <h3>
-                    <Link to={post.node.frontmatter.path} >
-                      {post.node.frontmatter.title}
+                <div key={project.node.frontmatter.path}>
+                    <Link to={project.node.frontmatter.path} >
+                      <h3>
+                        {project.node.frontmatter.title}
+                      </h3>
+                      <p>{project.node.excerpt}</p>
                     </Link>
-                  </h3>
-                  <small>{post.node.frontmatter.date}</small>
-                  <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
                 </div>
               )
             }
@@ -61,11 +62,9 @@ export const pageQuery = graphql`
         node {
           excerpt
           frontmatter {
-            path
-            date(formatString: "DD MMMM, YYYY")
-          }
-          frontmatter {
             title
+            date(formatString: "DD MMMM, YYYY")
+            path
           }
         }
       }

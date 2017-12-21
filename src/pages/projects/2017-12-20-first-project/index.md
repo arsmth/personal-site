@@ -3,6 +3,8 @@ type: project
 title: My First Project
 date: "2017-12-20T22:40:32.169Z"
 path: "/projects/first-project/"
+description: ""
+featuredImage: ""
 ---
 
 Far far away, behind the word mountains, far from the countries Vokalia

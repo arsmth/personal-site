@@ -4,8 +4,6 @@ import Link from 'gatsby-link'
 import get from 'lodash/get'
 import styled from 'styled-components'
 
-import Bio from '../components/Bio'
-
 const PostContainer = styled.section`
   border-top: none;
 `
@@ -24,8 +22,6 @@ class BlogPostTemplate extends React.Component {
             {post.frontmatter.date}
           </p>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr />
-          <Bio />
         </PostContainer>
       </div>
     )
