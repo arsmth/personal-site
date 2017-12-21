@@ -26,6 +26,7 @@
     "gatsby-transformer-remark": "^1.7.1",
     "gatsby-transformer-sharp": "^1.6.1",
     "lodash": "^4.15.0",
+    "react-text-loop": "^1.1.0",
     "styled-components": "^2.3.0"
   },
   "devDependencies": {
