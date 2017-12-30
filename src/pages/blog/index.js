@@ -4,10 +4,42 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
-import Bio from '../../components/Bio'
+import BlogHead from '../../components/BlogHead'
 
-const BlogList = styled.section`
-  border: none;
+const PostContainer = styled.div`
+  margin-bottom: 80px;
+
+  &:last-child {
+    margin: 0;
+  }
+`
+
+const PostLink = styled(Link)`
+  &:hover {
+    color: white;
+  }
+`
+
+const PostHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1em;
+`
+
+const PostTitle = styled.h3`
+  display: inline-block;
+  margin: 0;
+`
+
+const PostDate = styled.small`
+  display: inline-block;
+  color: rgba(255,255,255,.35);
+`
+
+const PostExcerpt = styled.p`
+  margin: 0;
+  line-height: 1.5em;
 `
 
 class BlogIndex extends React.Component {
@@ -18,26 +50,27 @@ class BlogIndex extends React.Component {
     return (
       <div>
         <Helmet title={get(this, 'props.data.site.siteMetadata.title')} />
-        <BlogList>
-          <Bio />
-          <br />
+        <BlogHead />
+        <section>
           {posts.map(post => {
             if (post.node.path !== '/404/') {
               const title = get(post, 'node.frontmatter.title') || post.node.path
               return (
-                <div key={post.node.frontmatter.path}>
-                  <h3>
-                    <Link to={post.node.frontmatter.path} >
-                      {post.node.frontmatter.title}
-                    </Link>
-                  </h3>
-                  <small>{post.node.frontmatter.date}</small>
-                  <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
-                </div>
+                <PostContainer key={post.node.frontmatter.path}>
+                  <PostLink to={post.node.frontmatter.path} >
+                    <PostHeader>
+                      <PostTitle>
+                        {post.node.frontmatter.title}
+                      </PostTitle>
+                      <PostDate>{post.node.frontmatter.date}</PostDate>
+                    </PostHeader>
+                    <PostExcerpt dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+                  </PostLink>
+                </PostContainer>
               )
             }
           })}
-        </BlogList>
+        </section>
       </div>
     )
   }
