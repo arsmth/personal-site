@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 const AboutSection = styled.section`
+
   @media (min-width: 1024px) {
     column-count: 2;
     column-gap: 2em;
   }
 
   & > p {
+    font-size: 1.1489em;
     text-indent: 2em;
     margin: 0;
 

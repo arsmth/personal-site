@@ -4,7 +4,7 @@ class Bio extends React.Component {
   render() {
     return (
       <p>
-        I may eventually spend some time here when I get around to it. Maybe I'll write some stuff about web and game development.
+        I change the css more often than I write on this blog.
       </p>
     )
   }

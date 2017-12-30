@@ -11,24 +11,6 @@ import './index.css'
 class Template extends React.Component {
   render() {
     const { location, children } = this.props
-    let header
-    if (location.pathname === '/') {
-      header = (
-        <h1>
-          <Link to={'/'} >
-            Gatsby Starter Blog
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3>
-          <Link to={'/'}>
-            Gatsby Starter Blog
-          </Link>
-        </h3>
-      )
-    }
     return (
       <div>
         <Helmet
@@ -38,7 +20,6 @@ class Template extends React.Component {
             { name: 'keywords', content: 'alex, smith, blog, javascript, gatsby, react, c-sharp, c#, games, frontend, web developer, designer, manchester, uk' },
           ]}
         />
-        {/* {header} */}
         {children()}
         <Footer />
       </div>
