@@ -3,7 +3,6 @@ import Link from 'gatsby-link'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
-import { Flex, Box } from 'grid-styled'
 import Img from 'gatsby-image'
 
 class ProjectFirstProject extends React.Component {
@@ -29,7 +28,7 @@ ProjectFirstProject.propTypes = {
 export default ProjectFirstProject
 
 export const pageQuery = graphql`
-  query ProjectIndexQuery {
+  query ProjectFirstProjectQuery {
     site {
       siteMetadata {
         title
