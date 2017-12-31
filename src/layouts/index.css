@@ -116,7 +116,10 @@ a {
 	line-height: 1em;
   color: #fff;
   text-decoration: none;
-	-webkit-transition: border-bottom 400ms ease;
+	transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-webkit-transition: all 400ms ease;
 }
 
 a:hover {

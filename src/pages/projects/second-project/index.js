@@ -5,13 +5,13 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
-class ProjectFirstProject extends React.Component {
+class ProjectSecondProject extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
 
     return (
       <div>
-        <Helmet title={`First Project | ${siteTitle}`} />
+        <Helmet title={siteTitle} />
         <section style={{'border': 'none'}}>
           <h2>First Project</h2>
           <p>This is my first project!</p>
@@ -21,14 +21,14 @@ class ProjectFirstProject extends React.Component {
   }
 }
 
-ProjectFirstProject.propTypes = {
+ProjectSecondProject.propTypes = {
   route: React.PropTypes.object,
 }
 
-export default ProjectFirstProject
+export default ProjectSecondProject
 
 export const pageQuery = graphql`
-  query ProjectFirstProjectQuery {
+  query ProjectSecondProjectQuery {
     site {
       siteMetadata {
         title

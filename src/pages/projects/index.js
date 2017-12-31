@@ -4,7 +4,6 @@ import Img from 'gatsby-image'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
 
 const Projects = styled.div`
   display: flex;
@@ -15,6 +14,8 @@ const ProjectBox = styled.div`
   font-size: 0px;
   position: relative;
   width: 100%;
+  max-height: 55vh;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     width: calc(100% / 2);
@@ -23,22 +24,38 @@ const ProjectBox = styled.div`
   @media (min-width: 1000px) {
     width: calc(100% / 3);
   }
-
-
 `
 
 const ProjectImg = styled(Img)`
   position: absolute;
-  max-width: 100%;
-  max-height: 55vh;
+  width: 100%;
+  transition: all 600ms cubic-bezier(0.39, 0.575, 0.565, 1);
 `
 
 const ProjectTitle = styled.p`
   position: absolute;
   bottom: 0;
   left: 0;
-  line-height: 1em;
-  margin: 0 0 1em 1em;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin: 0 0 1rem 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.175rem;
+  }
+`
+
+const ProjectLink = styled(Link)`
+  transition: all .4s ease-out;
+
+  &:hover {
+    color: white;
+
+    & ${ProjectImg} {
+      opacity: .8;
+      transform: scale(1.035) translateZ(1px);
+    }
+  }
 `
 
 class ProjectIndex extends React.Component {
@@ -48,23 +65,25 @@ class ProjectIndex extends React.Component {
       <div>
         <Helmet title={siteTitle} />
         <section style={{'border': 'none'}}>
-          <h2>Projects</h2>
+          <h3>Projects</h3>
           <Projects>
             <ProjectBox>
-              <Link to="/projects/first-project/" style={{width:'100%'}}>
+              <ProjectLink to="/projects/first-project/" style={{width:'100%'}}>
                 <ProjectImg sizes={this.props.data.imageOne.sizes} />
                 <ProjectTitle>First Project</ProjectTitle>
-              </Link>
+              </ProjectLink>
             </ProjectBox>
             <ProjectBox>
-              <Link to="/projects/first-project/" style={{width:'100%'}}>
+              <ProjectLink to="/projects/second-project/" style={{width:'100%'}}>
                 <ProjectImg sizes={this.props.data.imageOne.sizes} />
-              </Link>
+                <ProjectTitle>Second Project</ProjectTitle>
+              </ProjectLink>
             </ProjectBox>
             <ProjectBox>
-              <Link to="/projects/first-project/" style={{width:'100%'}}>
+              <ProjectLink to="/projects/first-project/" style={{width:'100%'}}>
                 <ProjectImg sizes={this.props.data.imageOne.sizes} />
-              </Link>
+                <ProjectTitle>Third Project</ProjectTitle>
+              </ProjectLink>
             </ProjectBox>
           </Projects>
         </section>
@@ -87,7 +106,12 @@ export const pageQuery = graphql`
       }
     }
     imageOne: imageSharp(id: { regex: "/first-project-featured-image.jpg/" }) {
-      sizes(maxWidth: 630) {
+      sizes(maxWidth: 720) {
+        ...GatsbyImageSharpSizes
+      }
+    }
+    imageTwo: imageSharp(id: { regex: "/second-project-featured-image.jpg/" }) {
+      sizes(maxWidth: 720) {
         ...GatsbyImageSharpSizes
       }
     }
