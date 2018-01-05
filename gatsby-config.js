@@ -38,11 +38,30 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        "UA-60252886-2",
+        trackingId: "UA-60252886-2",
+        anonymize: true,
       },
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./src/favicon.png",
+        injectHTML: true,
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          twitter: true,
+          yandex: false,
+          windows: true
+        }
+      }
+    },
   ],
 }
