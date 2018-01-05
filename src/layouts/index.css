@@ -122,16 +122,11 @@ a {
 	-webkit-transition: all 400ms ease;
 }
 
-a:hover {
-  color: rgba(255, 255, 255, 0.6);
-}
-
 p > a {
 	border-bottom: solid 2px rgba(255, 255, 255, 0.15);
 }
 
 p > a:hover {
-	color: inherit;
 	border-bottom-color: rgba(255, 255, 255, 1);
 }
 

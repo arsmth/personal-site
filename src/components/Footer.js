@@ -28,12 +28,18 @@ const FooterItem = styled.li`
   margin-bottom: .5em;
   line-height: 1.125em;
   list-style: none;
+
+  & a:hover {
+    opacity: .6;
+  }
 `
 
 const Footer = () => (
   <FooterSection>
     <FooterList>
-      <FooterItem>Alex Smith</FooterItem>
+      <FooterItem>
+        <a href="/" style={{ opacity: 'inherit' }}>Alex Smith</a>
+      </FooterItem>
       <FooterItem dark>Manchester, UK</FooterItem>
       <FooterItem dark>&#8212;</FooterItem>
     </FooterList>
