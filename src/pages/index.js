@@ -74,8 +74,14 @@ class IndexPage extends React.Component {
             <Projects>
               <ProjectBox>
                 <ProjectLink to="/firths/" style={{width:'100%'}}>
-                  <ProjectImg sizes={this.props.data.imageTwo.sizes} />
+                  <ProjectImg sizes={this.props.data.firths.sizes} />
                   <ProjectTitle>Firths</ProjectTitle>
+                </ProjectLink>
+              </ProjectBox>
+              <ProjectBox>
+                <ProjectLink to="/chubby-warriors/" style={{width:'100%'}}>
+                  <ProjectImg sizes={this.props.data.chubbyWarriors.sizes} />
+                  <ProjectTitle>Chubby Warriors</ProjectTitle>
                 </ProjectLink>
               </ProjectBox>
             </Projects>
@@ -96,8 +102,13 @@ export const pageQuery = graphql`
         title
       }
     }
-    imageTwo: imageSharp(id: { regex: "/firth-law-featured-image.jpg/" }) {
-      sizes(maxWidth: 720) {
+    firths: imageSharp(id: { regex: "/firth-law-featured-image.jpg/" }) {
+      sizes(maxWidth: 800) {
+        ...GatsbyImageSharpSizes
+      }
+    }
+    chubbyWarriors: imageSharp(id: { regex: "/chubby-warriors-featured-image.jpeg/" }) {
+      sizes(maxWidth: 800) {
         ...GatsbyImageSharpSizes
       }
     }
